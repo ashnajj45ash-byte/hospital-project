@@ -1,17 +1,11 @@
 import os
-import faiss
-from sentence_transformers import SentenceTransformer
+import re
 
 
 class HospitalRAG:
     def __init__(self, data_folder="hospital_data"):
         self.data_folder = data_folder
-
-        # Model used to convert hospital text into embeddings
-        self.model = SentenceTransformer("all-MiniLM-L6-v2")
-
         self.documents = []
-        self.index = None
 
         self.load_documents()
 
@@ -47,37 +41,56 @@ class HospitalRAG:
                 "No hospital documents found in hospital_data."
             )
 
-        # Convert text into embeddings
-        embeddings = self.model.encode(
-            self.documents
-        )
-
-        # Create FAISS search index
-        dimension = embeddings.shape[1]
-
-        self.index = faiss.IndexFlatL2(
-            dimension
-        )
-
-        self.index.add(embeddings)
-
     def search(self, question, top_k=3):
         """Find hospital information relevant to the question."""
 
-        question_embedding = self.model.encode(
-            [question]
+        question_words = set(
+            re.findall(r"\b[a-zA-Z0-9]+\b", question.lower())
         )
 
-        distances, indices = self.index.search(
-            question_embedding,
-            top_k
+        # Words that don't help much with searching
+        stop_words = {
+            "what", "is", "are", "the", "a", "an",
+            "where", "when", "how", "can", "i",
+            "do", "does", "please", "tell", "me",
+            "about", "of", "to", "for", "in",
+            "on", "at", "and", "or", "my"
+        }
+
+        question_words -= stop_words
+
+        scored_documents = []
+
+        for document in self.documents:
+
+            document_words = set(
+                re.findall(
+                    r"\b[a-zA-Z0-9]+\b",
+                    document.lower()
+                )
+            )
+
+            score = len(question_words & document_words)
+
+            if score > 0:
+                scored_documents.append(
+                    (score, document)
+                )
+
+        # Highest matching documents first
+        scored_documents.sort(
+            key=lambda item: item[0],
+            reverse=True
         )
 
-        results = []
+        results = [
+            document
+            for score, document in scored_documents[:top_k]
+        ]
 
-        for index in indices[0]:
-            if index < len(self.documents):
-                results.append(self.documents[index])
+        # If nothing matches, return the first few documents
+        if not results:
+            results = self.documents[:top_k]
 
         return results
 

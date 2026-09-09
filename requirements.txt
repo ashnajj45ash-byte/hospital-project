@@ -3,6 +3,4 @@ Werkzeug==3.0.3
 python-dotenv==1.0.1
 groq==0.9.0
 reportlab==4.2.2
-sentence-transformers
-faiss-cpu
 gunicorn
