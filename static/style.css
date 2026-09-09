@@ -1,0 +1,2118 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+body { background: #f4f7fb; color: #1c2b3a; }
+
+.navbar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 40px; background: #0f766e; color: white;
+}
+.navbar a { color: white; text-decoration: none; margin-left: 20px; font-weight: 500; }
+.brand { font-size: 1.4rem; font-weight: 700; }
+.brand span { color: #a7f3d0; }
+
+.hero {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 40px; padding: 70px 60px; text-align: left; flex-wrap: wrap;
+}
+.hero-content { flex: 1; min-width: 300px; }
+.hero-content h1 { font-size: 2.4rem; margin-bottom: 16px; color: #0f172a; text-align: left; }
+.hero-content p { max-width: 600px; margin: 0 0 24px; color: #475569; }
+.hero-image { flex: 1; min-width: 280px; }
+.hero-image img { width: 100%; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+.cta {
+  display: inline-block; background: #0f766e; color: white; padding: 12px 28px;
+  border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 10px;
+}
+.cta:hover { background: #0b5c56; }
+
+.stats-strip {
+  display: flex; justify-content: center; gap: 60px; padding: 30px 20px;
+  background: #0f766e; color: white; flex-wrap: wrap;
+}
+.stats-strip div { text-align: center; }
+.stats-strip strong { display: block; font-size: 1.8rem; }
+.stats-strip span { font-size: 0.85rem; color: #a7f3d0; }
+
+.features {
+  display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; padding: 20px 40px 60px;
+}
+.feature-card {
+  background: white; border-radius: 12px; padding: 24px; width: 260px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+.feature-card h3 { margin-bottom: 10px; }
+
+.departments { padding: 40px 20px 70px; text-align: center; }
+.departments h2 { margin-bottom: 24px; }
+.dept-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px; max-width: 900px; margin: 0 auto;
+}
+.dept-card {
+  background: white; padding: 20px; border-radius: 12px; font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+footer { text-align: center; padding: 20px; color: #64748b; font-size: 0.85rem; }
+
+.auth-wrapper {
+  display: flex; justify-content: center; align-items: center;
+  min-height: 80vh; padding: 40px 20px;
+}
+.auth-box {
+  background: white; padding: 36px; border-radius: 16px; width: 380px;
+  box-shadow: 0 10px 30px rgba(15,23,42,0.1);
+}
+.auth-toggle {
+  display: flex; background: #f1f5f9; border-radius: 10px; padding: 4px; margin-bottom: 24px;
+}
+.toggle-btn {
+  flex: 1; padding: 10px; border: none; background: transparent; border-radius: 8px;
+  font-weight: 600; cursor: pointer; color: #64748b; transition: all 0.2s ease;
+}
+.toggle-btn.active { background: #0f766e; color: white; }
+.auth-form { display: none; }
+.auth-form.active { display: block; }
+.auth-form h2 { margin-bottom: 18px; text-align: center; }
+.auth-box input {
+  width: 100%; padding: 11px; margin-bottom: 12px; border: 1px solid #cbd5e1;
+  border-radius: 8px; font-size: 0.95rem;
+}
+.auth-box input:focus { outline: none; border-color: #0f766e; }
+.auth-box button[type="submit"] {
+  width: 100%; padding: 11px; background: #0f766e; color: white; border: none;
+  border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 4px;
+}
+.auth-box button[type="submit"]:hover { background: #0b5c56; }
+.switch-text { text-align: center; margin-top: 14px; font-size: 0.85rem; color: #64748b; }
+.switch-text a { color: #0f766e; font-weight: 600; cursor: pointer; text-decoration: underline; }
+.flash { width: 100%; text-align: center; color: #b91c1c; margin-bottom: 10px; }
+
+.dashboard { max-width: 800px; margin: 50px auto; padding: 0 20px; }
+.dashboard-card {
+  background: white; border-radius: 16px; padding: 40px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+.dashboard h1 { margin-bottom: 12px; }
+.dashboard h2 { margin-top: 10px; margin-bottom: 12px; font-size: 1.15rem; }
+.history-list { list-style: none; margin-top: 16px; }
+.history-list li {
+  background: white; padding: 14px; border-radius: 8px; margin-bottom: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.timestamp { display: block; font-size: 0.75rem; color: #94a3b8; margin-top: 6px; }
+
+.chat-container {
+  max-width: 700px; margin: 30px auto; background: white; border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08); display: flex; flex-direction: column;
+  height: 75vh;
+}
+.chat-window { flex: 1; padding: 20px; overflow-y: auto; }
+.bot-msg, .user-msg {
+  padding: 10px 14px; border-radius: 10px; margin-bottom: 12px; max-width: 80%;
+  line-height: 1.4;
+}
+.bot-msg { background: #e0f2f1; align-self: flex-start; }
+.user-msg { background: #0f766e; color: white; margin-left: auto; }
+.chat-form { display: flex; border-top: 1px solid #e2e8f0; padding: 12px; }
+.chat-form input {
+  flex: 1; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; margin-right: 10px;
+}
+.chat-form button {
+  padding: 10px 20px; background: #0f766e; color: white; border: none;
+  border-radius: 6px; font-weight: 600; cursor: pointer;
+}
+.chat-form button:hover { background: #0b5c56; }
+/* ===== Floating Chat Widget ===== */
+.chat-widget-launcher {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #0f766e;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(15, 118, 110, 0.4);
+  z-index: 1000;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.chat-widget-launcher:hover { background: #0b5c56; transform: scale(1.06); }
+.chat-widget-launcher svg { width: 26px; height: 26px; }
+.chat-widget-launcher .close-icon { display: none; }
+.chat-widget-launcher.open .chat-icon { display: none; }
+.chat-widget-launcher.open .close-icon { display: block; }
+
+.chat-widget-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ef4444;
+  border: 2px solid white;
+}
+
+.chat-widget-panel {
+  position: fixed;
+  bottom: 96px;
+  right: 24px;
+  width: 420px;
+  max-width: calc(100vw - 32px);
+  height: 600px;
+  max-height: calc(100vh - 140px);
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.18);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(16px) scale(0.98);
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.chat-widget-panel.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.chat-widget-header {
+  background: #0f766e;
+  color: white;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.chat-widget-header .avatar {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+}
+.chat-widget-header .title { font-weight: 700; font-size: 0.95rem; }
+.chat-widget-header .subtitle { font-size: 0.75rem; color: #a7f3d0; }
+.chat-widget-status { margin-left: auto; display: flex; align-items: center; gap: 6px; font-size: 0.72rem; color: #a7f3d0; }
+.chat-widget-status .dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; }
+
+.chat-widget-body {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  background: #f4f7fb;
+  display: flex;
+  flex-direction: column;
+}
+.chat-widget-body .bot-msg,
+.chat-widget-body .user-msg {
+  padding: 10px 14px;
+  border-radius: 14px;
+  margin-bottom: 10px;
+  max-width: 82%;
+  line-height: 1.4;
+  font-size: 0.88rem;
+}
+.chat-widget-body .bot-msg { background: white; box-shadow: 0 1px 4px rgba(0,0,0,0.06); align-self: flex-start; border-bottom-left-radius: 4px; }
+.chat-widget-body .user-msg { background: #0f766e; color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
+.chat-widget-body .bot-msg.typing { color: #94a3b8; font-style: italic; }
+
+.chat-widget-form {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid #e2e8f0;
+  background: white;
+}
+.chat-widget-form input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 20px;
+  font-size: 0.88rem;
+  outline: none;
+}
+.chat-widget-form input:focus { border-color: #0f766e; }
+.chat-widget-form button {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: #0f766e;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.chat-widget-form button:hover { background: #0b5c56; }
+.chat-widget-form button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+@media (max-width: 480px) {
+  .chat-widget-panel { right: 16px; left: 16px; width: auto; bottom: 90px; }
+  .chat-widget-launcher { right: 16px; bottom: 16px; }
+}
+
+@media (max-width: 700px) {
+  .hero { text-align: center; padding: 50px 20px; }
+  .hero-content h1, .hero-content p { text-align: center; }
+}
+/* ===== Chatbot toolbar ===== */
+.chatbot-toolbar {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+  padding: 20px 20px 0;
+}
+.toolbar-btn {
+  background: white; border: 1px solid #cbd5e1; color: #0f172a;
+  padding: 10px 18px; border-radius: 8px; font-weight: 600; cursor: pointer;
+  font-size: 0.9rem; transition: all 0.15s ease;
+}
+.toolbar-btn:hover { background: #0f766e; color: white; border-color: #0f766e; }
+
+/* ===== Food order modal ===== */
+.order-overlay {
+  position: fixed; inset: 0; background: rgba(15,23,42,0.45);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.15s ease;
+  z-index: 1100; padding: 20px;
+}
+.order-overlay.open { opacity: 1; pointer-events: auto; }
+.order-modal {
+  background: white; border-radius: 16px; padding: 28px;
+  width: 420px; max-width: 100%; max-height: 85vh; overflow-y: auto;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+}
+.order-modal-header {
+  display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;
+}
+.order-close {
+  background: none; border: none; font-size: 1.1rem; cursor: pointer; color: #64748b;
+}
+.order-modal-subtitle { color: #64748b; font-size: 0.85rem; margin-bottom: 16px; }
+.order-items { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+.order-item {
+  display: flex; align-items: center; gap: 10px; padding: 8px 10px;
+  border: 1px solid #e2e8f0; border-radius: 8px; cursor: pointer; font-size: 0.92rem;
+}
+.order-item:hover { background: #f4f7fb; }
+.order-label { display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 6px; margin-top: 12px; }
+#order-room, #order-notes {
+  width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px;
+  font-size: 0.9rem; margin-bottom: 8px; font-family: inherit;
+}
+.order-status { text-align: center; font-size: 0.85rem; margin-top: 10px; min-height: 18px; }
+/* =========================================================
+   DASHBOARD FOOD ORDER SECTION
+   ========================================================= */
+
+.dashboard-description {
+    color: #64748b;
+    margin-bottom: 30px;
+}
+
+
+/* Food section */
+
+.food-order-section {
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid #e2e8f0;
+}
+
+
+.food-order-section h2 {
+    color: #0f172a;
+    margin-bottom: 6px;
+    font-size: 1.4rem;
+}
+
+
+.food-section-description {
+    color: #64748b;
+    margin-bottom: 22px;
+}
+
+
+
+/* Food cards container */
+
+.food-orders {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    margin-top: 20px;
+}
+
+
+
+/* Individual food card */
+
+.food-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.06);
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+
+.food-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.10);
+}
+
+
+
+/* Food icon */
+
+.food-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 14px;
+    background: #ecfdf5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 28px;
+
+    margin-bottom: 15px;
+}
+
+
+
+/* Card heading */
+
+.food-card h3 {
+    color: #0f172a;
+    font-size: 1.15rem;
+    margin-bottom: 10px;
+}
+
+
+
+/* Card description */
+
+.food-card p {
+    color: #64748b;
+    font-size: 0.9rem;
+    line-height: 1.5;
+
+    margin-bottom: 20px;
+}
+
+
+
+/* Order button */
+
+.food-btn {
+    width: 100%;
+
+    padding: 12px 18px;
+
+    background: #0f766e;
+    color: white;
+
+    border: none;
+    border-radius: 9px;
+
+    font-size: 0.92rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+}
+
+
+.food-btn:hover {
+    background: #0b5c56;
+}
+
+
+
+/* Chat history button */
+
+.history-button-container {
+    margin-top: 30px;
+}
+
+
+
+/* =========================================================
+   FOOD ORDER MODAL
+   ========================================================= */
+
+.order-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(15, 23, 42, 0.45);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: opacity 0.2s ease;
+
+    z-index: 1100;
+}
+
+
+.order-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+
+/* Modal */
+
+.order-modal {
+    background: white;
+
+    width: 450px;
+    max-width: 100%;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    border-radius: 18px;
+
+    padding: 28px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+
+
+/* Modal header */
+
+.order-modal-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 6px;
+}
+
+
+.order-modal-header h3 {
+    color: #0f172a;
+
+    font-size: 1.3rem;
+}
+
+
+
+/* Close button */
+
+.order-close {
+    background: none;
+
+    border: none;
+
+    font-size: 1.3rem;
+
+    color: #64748b;
+
+    cursor: pointer;
+}
+
+
+.order-close:hover {
+    color: #0f172a;
+}
+
+
+
+/* Subtitle */
+
+.order-modal-subtitle {
+    color: #64748b;
+
+    font-size: 0.88rem;
+
+    margin-bottom: 20px;
+
+    line-height: 1.4;
+}
+
+
+
+/* Food items */
+
+.order-items {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+
+    margin-bottom: 18px;
+}
+
+
+.order-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 11px 12px;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    color: #334155;
+
+    font-size: 0.9rem;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease;
+}
+
+
+.order-item:hover {
+    background: #f4f7fb;
+
+    border-color: #0f766e;
+}
+
+
+.order-item input {
+    accent-color: #0f766e;
+
+    width: 16px;
+    height: 16px;
+}
+
+
+
+/* Labels */
+
+.order-label {
+    display: block;
+
+    color: #334155;
+
+    font-size: 0.86rem;
+
+    font-weight: 600;
+
+    margin-top: 13px;
+
+    margin-bottom: 6px;
+}
+
+
+
+/* Room input */
+
+#order-room,
+#order-notes {
+    width: 100%;
+
+    padding: 11px 12px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 9px;
+
+    font-family: inherit;
+
+    font-size: 0.9rem;
+
+    outline: none;
+}
+
+
+#order-room:focus,
+#order-notes:focus {
+    border-color: #0f766e;
+
+    box-shadow:
+        0 0 0 2px rgba(15, 118, 110, 0.08);
+}
+
+
+#order-notes {
+    resize: vertical;
+
+    min-height: 80px;
+}
+
+
+
+/* Place order button */
+
+.food-submit-btn {
+    width: 100%;
+
+    padding: 12px;
+
+    margin-top: 18px;
+
+    background: #0f766e;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 9px;
+
+    font-size: 0.95rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.food-submit-btn:hover {
+    background: #0b5c56;
+}
+
+
+
+/* Order status */
+
+.order-status {
+    text-align: center;
+
+    min-height: 20px;
+
+    margin-top: 12px;
+
+    font-size: 0.85rem;
+
+    font-weight: 600;
+}
+
+
+.order-status.success {
+    color: #0f766e;
+}
+
+
+.order-status.error {
+    color: #b91c1c;
+}
+
+
+
+/* =========================================================
+   MOBILE RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .food-orders {
+        grid-template-columns: 1fr;
+    }
+
+    .food-card {
+        width: 100%;
+    }
+
+    .dashboard-card {
+        padding: 25px;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .food-order-section h2 {
+        font-size: 1.2rem;
+    }
+
+    .order-modal {
+        padding: 20px;
+    }
+
+}
+/* =========================================================
+   DASHBOARD FOOD SERVICES
+   ========================================================= */
+
+.food-order-section {
+    width: 100%;
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.food-order-section h2 {
+    margin: 0 0 8px 0;
+    color: #102a43;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.food-section-description {
+    margin: 0 0 24px 0;
+    color: #64748b;
+    font-size: 1rem;
+}
+
+
+/* =========================================================
+   FOOD CARDS
+   ========================================================= */
+
+.food-orders {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 24px;
+
+    align-items: stretch;
+}
+
+
+.food-card {
+    box-sizing: border-box;
+
+    width: 100%;
+
+    min-height: 315px;
+
+    padding: 26px;
+
+    background: #ffffff;
+
+    border: 1px solid #dbe4ea;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 6px 20px rgba(15, 23, 42, 0.07);
+
+    display: flex;
+
+    flex-direction: column;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.food-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 28px rgba(15, 23, 42, 0.11);
+}
+
+
+/* =========================================================
+   FOOD ICON
+   ========================================================= */
+
+.food-icon {
+    width: 64px;
+    height: 64px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 18px;
+
+    background: #ecfdf5;
+
+    border-radius: 16px;
+
+    font-size: 32px;
+}
+
+
+/* =========================================================
+   FOOD CARD TEXT
+   ========================================================= */
+
+.food-card h3 {
+    margin: 0 0 10px 0;
+
+    color: #102a43;
+
+    font-size: 1.2rem;
+
+    font-weight: 700;
+}
+
+
+.food-card p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 0.95rem;
+
+    line-height: 1.55;
+
+    max-width: 390px;
+}
+
+
+/* =========================================================
+   FOOD BUTTON
+   ========================================================= */
+
+.food-btn {
+    width: 100%;
+
+    margin-top: auto;
+
+    padding: 13px 18px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #117f78;
+
+    color: #ffffff;
+
+    font-size: 0.95rem;
+
+    font-weight: 700;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.15s ease;
+}
+
+
+.food-btn:hover {
+    background: #0d6d67;
+
+    transform: translateY(-1px);
+}
+
+
+.food-btn:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   CHAT HISTORY BUTTON
+   ========================================================= */
+
+.history-button-container {
+    margin-top: 28px !important;
+
+    margin-bottom: 0;
+}
+
+
+.history-button-container .cta {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 230px;
+
+    padding: 13px 22px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   FOOD ORDER MODAL
+   ========================================================= */
+
+.order-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 2000;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    background: rgba(15, 23, 42, 0.5);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+}
+
+
+.order-overlay.open {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.order-modal {
+    width: 100%;
+
+    max-width: 470px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    box-sizing: border-box;
+
+    padding: 28px;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.22);
+}
+
+
+.order-modal-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 8px;
+}
+
+
+.order-modal-header h3 {
+    margin: 0;
+
+    color: #102a43;
+
+    font-size: 1.3rem;
+
+    font-weight: 700;
+}
+
+
+.order-close {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f1f5f9;
+
+    color: #475569;
+
+    font-size: 1.1rem;
+
+    cursor: pointer;
+}
+
+
+.order-close:hover {
+    background: #e2e8f0;
+
+    color: #0f172a;
+}
+
+
+.order-modal-subtitle {
+    margin: 0 0 20px 0;
+
+    color: #64748b;
+
+    font-size: 0.9rem;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   FOOD CHECKBOX ITEMS
+   ========================================================= */
+
+.order-items {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+
+    margin-bottom: 20px;
+}
+
+
+.order-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 11px 13px;
+
+    border: 1px solid #dbe4ea;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: #334155;
+
+    font-size: 0.9rem;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease;
+}
+
+
+.order-item:hover {
+    background: #f8fafc;
+
+    border-color: #117f78;
+}
+
+
+.order-item input {
+    width: 17px;
+
+    height: 17px;
+
+    margin: 0;
+
+    accent-color: #117f78;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   FORM LABELS
+   ========================================================= */
+
+.order-label {
+    display: block;
+
+    margin: 14px 0 7px 0;
+
+    color: #334155;
+
+    font-size: 0.87rem;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   FORM INPUTS
+   ========================================================= */
+
+#order-room,
+#order-notes {
+    box-sizing: border-box;
+
+    width: 100%;
+
+    padding: 11px 13px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: #334155;
+
+    font-family: inherit;
+
+    font-size: 0.9rem;
+
+    outline: none;
+}
+
+
+#order-room:focus,
+#order-notes:focus {
+    border-color: #117f78;
+
+    box-shadow:
+        0 0 0 3px rgba(17, 127, 120, 0.1);
+}
+
+
+#order-notes {
+    resize: vertical;
+
+    min-height: 80px;
+}
+
+
+/* =========================================================
+   PLACE ORDER BUTTON
+   ========================================================= */
+
+.order-submit-btn {
+    width: 100%;
+
+    margin-top: 18px;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #117f78;
+
+    color: #ffffff;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.order-submit-btn:hover {
+    background: #0d6d67;
+}
+
+
+/* =========================================================
+   ORDER STATUS
+   ========================================================= */
+
+.order-status {
+    min-height: 20px;
+
+    margin: 12px 0 0 0;
+
+    text-align: center;
+
+    font-size: 0.88rem;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    .food-orders {
+        grid-template-columns: 1fr;
+    }
+
+    .food-card {
+        min-height: auto;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .food-order-section {
+        margin-top: 25px;
+
+        padding-top: 22px;
+    }
+
+    .food-card {
+        padding: 22px;
+    }
+
+    .order-modal {
+        padding: 22px;
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .food-orders {
+        gap: 16px;
+    }
+
+    .food-card {
+        padding: 20px;
+
+        border-radius: 14px;
+    }
+
+    .food-icon {
+        width: 56px;
+        height: 56px;
+
+        font-size: 28px;
+    }
+
+    .food-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .food-card p {
+        font-size: 0.9rem;
+    }
+
+}
+/* =========================================================
+   DASHBOARD FOOD SERVICES
+   ========================================================= */
+
+.food-order-section {
+    width: 100%;
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.food-order-section h2 {
+    margin: 0 0 8px 0;
+    color: #102a43;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.food-section-description {
+    margin: 0 0 24px 0;
+    color: #64748b;
+    font-size: 1rem;
+}
+
+
+/* =========================================================
+   FOOD CARDS
+   ========================================================= */
+
+.food-orders {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 24px;
+
+    align-items: stretch;
+}
+
+
+.food-card {
+    box-sizing: border-box;
+
+    width: 100%;
+
+    min-height: 315px;
+
+    padding: 26px;
+
+    background: #ffffff;
+
+    border: 1px solid #dbe4ea;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 6px 20px rgba(15, 23, 42, 0.07);
+
+    display: flex;
+
+    flex-direction: column;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.food-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 28px rgba(15, 23, 42, 0.11);
+}
+
+
+/* =========================================================
+   FOOD ICON
+   ========================================================= */
+
+.food-icon {
+    width: 64px;
+    height: 64px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 18px;
+
+    background: #ecfdf5;
+
+    border-radius: 16px;
+
+    font-size: 32px;
+}
+
+
+/* =========================================================
+   FOOD CARD TEXT
+   ========================================================= */
+
+.food-card h3 {
+    margin: 0 0 10px 0;
+
+    color: #102a43;
+
+    font-size: 1.2rem;
+
+    font-weight: 700;
+}
+
+
+.food-card p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 0.95rem;
+
+    line-height: 1.55;
+
+    max-width: 390px;
+}
+
+
+/* =========================================================
+   FOOD BUTTON
+   ========================================================= */
+
+.food-btn {
+    width: 100%;
+
+    margin-top: auto;
+
+    padding: 13px 18px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #117f78;
+
+    color: #ffffff;
+
+    font-size: 0.95rem;
+
+    font-weight: 700;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.15s ease;
+}
+
+
+.food-btn:hover {
+    background: #0d6d67;
+
+    transform: translateY(-1px);
+}
+
+
+.food-btn:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   CHAT HISTORY BUTTON
+   ========================================================= */
+
+.history-button-container {
+    margin-top: 28px !important;
+
+    margin-bottom: 0;
+}
+
+
+.history-button-container .cta {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 230px;
+
+    padding: 13px 22px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   FOOD ORDER MODAL
+   ========================================================= */
+
+.order-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 2000;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    background: rgba(15, 23, 42, 0.5);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+}
+
+
+.order-overlay.open {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.order-modal {
+    width: 100%;
+
+    max-width: 470px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    box-sizing: border-box;
+
+    padding: 28px;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.22);
+}
+
+
+.order-modal-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 8px;
+}
+
+
+.order-modal-header h3 {
+    margin: 0;
+
+    color: #102a43;
+
+    font-size: 1.3rem;
+
+    font-weight: 700;
+}
+
+
+.order-close {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f1f5f9;
+
+    color: #475569;
+
+    font-size: 1.1rem;
+
+    cursor: pointer;
+}
+
+
+.order-close:hover {
+    background: #e2e8f0;
+
+    color: #0f172a;
+}
+
+
+.order-modal-subtitle {
+    margin: 0 0 20px 0;
+
+    color: #64748b;
+
+    font-size: 0.9rem;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   FOOD CHECKBOX ITEMS
+   ========================================================= */
+
+.order-items {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+
+    margin-bottom: 20px;
+}
+
+
+.order-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 11px 13px;
+
+    border: 1px solid #dbe4ea;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: #334155;
+
+    font-size: 0.9rem;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease;
+}
+
+
+.order-item:hover {
+    background: #f8fafc;
+
+    border-color: #117f78;
+}
+
+
+.order-item input {
+    width: 17px;
+
+    height: 17px;
+
+    margin: 0;
+
+    accent-color: #117f78;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   FORM LABELS
+   ========================================================= */
+
+.order-label {
+    display: block;
+
+    margin: 14px 0 7px 0;
+
+    color: #334155;
+
+    font-size: 0.87rem;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   FORM INPUTS
+   ========================================================= */
+
+#order-room,
+#order-notes {
+    box-sizing: border-box;
+
+    width: 100%;
+
+    padding: 11px 13px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: #334155;
+
+    font-family: inherit;
+
+    font-size: 0.9rem;
+
+    outline: none;
+}
+
+
+#order-room:focus,
+#order-notes:focus {
+    border-color: #117f78;
+
+    box-shadow:
+        0 0 0 3px rgba(17, 127, 120, 0.1);
+}
+
+
+#order-notes {
+    resize: vertical;
+
+    min-height: 80px;
+}
+
+
+/* =========================================================
+   PLACE ORDER BUTTON
+   ========================================================= */
+
+.order-submit-btn {
+    width: 100%;
+
+    margin-top: 18px;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #117f78;
+
+    color: #ffffff;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.order-submit-btn:hover {
+    background: #0d6d67;
+}
+
+
+/* =========================================================
+   ORDER STATUS
+   ========================================================= */
+
+.order-status {
+    min-height: 20px;
+
+    margin: 12px 0 0 0;
+
+    text-align: center;
+
+    font-size: 0.88rem;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    .food-orders {
+        grid-template-columns: 1fr;
+    }
+
+    .food-card {
+        min-height: auto;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .food-order-section {
+        margin-top: 25px;
+
+        padding-top: 22px;
+    }
+
+    .food-card {
+        padding: 22px;
+    }
+
+    .order-modal {
+        padding: 22px;
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .food-orders {
+        gap: 16px;
+    }
+
+    .food-card {
+        padding: 20px;
+
+        border-radius: 14px;
+    }
+
+    .food-icon {
+        width: 56px;
+        height: 56px;
+
+        font-size: 28px;
+    }
+
+    .food-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .food-card p {
+        font-size: 0.9rem;
+    }
+
+}
+/* ===== New patient services: forms, badges, buttons ===== */
+.stacked-form { display: flex; flex-direction: column; }
+.stacked-form input,
+.stacked-form select,
+.stacked-form textarea {
+  width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px;
+  font-size: 0.9rem; margin-bottom: 12px; font-family: inherit;
+}
+.stacked-form input:focus,
+.stacked-form select:focus,
+.stacked-form textarea:focus { outline: none; border-color: #0f766e; }
+
+.status-badge {
+  display: inline-block; padding: 2px 10px; border-radius: 999px;
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+  vertical-align: middle;
+}
+.status-pending { background: #fef3c7; color: #92400e; }
+.status-confirmed { background: #dcfce7; color: #166534; }
+.status-cancelled { background: #fee2e2; color: #991b1b; }
+.status-unpaid { background: #fee2e2; color: #991b1b; }
+.status-paid { background: #dcfce7; color: #166534; }
+.status-active { background: #fee2e2; color: #991b1b; }
+.status-resolved { background: #dcfce7; color: #166534; }
+
+.link-btn {
+  background: none; border: none; color: #b91c1c; text-decoration: underline;
+  cursor: pointer; font-size: 0.8rem; padding: 0; margin-left: 8px;
+}
+
+/* ===== SOS button ===== */
+.sos-launcher {
+  position: fixed; bottom: 24px; left: 24px; width: 56px; height: 56px;
+  border-radius: 50%; background: #b91c1c; color: white; border: none;
+  cursor: pointer; font-size: 1.4rem; display: flex; align-items: center;
+  justify-content: center; box-shadow: 0 8px 20px rgba(185,28,28,0.5);
+  z-index: 1000; animation: sos-pulse 2s infinite;
+}
+@keyframes sos-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(185,28,28,0.5); }
+  70% { box-shadow: 0 0 0 14px rgba(185,28,28,0); }
+  100% { box-shadow: 0 0 0 0 rgba(185,28,28,0); }
+}
+.sos-submit-btn {
+  width: 100%; padding: 12px; background: #b91c1c; color: white; border: none;
+  border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 0.95rem;
+}
+.sos-submit-btn:hover { background: #991b1b; }
+
+/* ==========================================================
+   POLISH PASS — tighter spacing + mobile responsiveness
+   for dashboard, health-service pages, and shared widgets.
+   (Appended last so it reliably wins the cascade.)
+   ========================================================== */
+
+/* Tighter vertical rhythm inside dashboard-style cards */
+.dashboard-card h1 { margin-bottom: 8px; font-size: 1.6rem; }
+.dashboard-card h2 { margin-top: 26px; margin-bottom: 10px; font-size: 1.05rem; }
+.dashboard-card > p { margin-bottom: 16px; }
+
+/* Forms: consistent, comfortable spacing */
+.stacked-form { gap: 0; }
+.stacked-form .order-label { margin-top: 2px; margin-bottom: 5px; font-size: 0.82rem; }
+.stacked-form input,
+.stacked-form select,
+.stacked-form textarea { margin-bottom: 14px; }
+
+/* List items (appointments, medications, bills, history) */
+.history-list li {
+  padding: 14px 16px;
+  line-height: 1.5;
+}
+.history-list li + li { margin-top: 8px; }
+.history-list .status-badge { margin: 4px 0; }
+.history-list .link-btn { vertical-align: middle; }
+.history-list .timestamp { margin-top: 6px; }
+
+/* Navbar: wrap gracefully instead of overflowing */
+.navbar { flex-wrap: wrap; row-gap: 8px; }
+
+/* ===== Tablet & below ===== */
+@media (max-width: 640px) {
+  .navbar { padding: 14px 20px; }
+  .navbar a { margin-left: 14px; font-size: 0.9rem; }
+  .brand { font-size: 1.2rem; }
+
+  .dashboard { margin: 24px auto; padding: 0 14px; }
+  .dashboard-card { padding: 22px; }
+  .dashboard-card h1 { font-size: 1.35rem; }
+
+  .food-orders,
+  .food-order-section .food-orders {
+    grid-template-columns: 1fr !important;
+    gap: 14px;
+  }
+  .food-card { padding: 18px; }
+
+  .stacked-form input,
+  .stacked-form select,
+  .stacked-form textarea {
+    padding: 11px;
+    font-size: 0.95rem;
+  }
+
+  .history-list li {
+    padding: 12px 14px;
+    font-size: 0.92rem;
+  }
+
+  .order-modal { width: 100%; padding: 20px; border-radius: 14px; }
+}
+
+/* ===== Small phones ===== */
+@media (max-width: 420px) {
+  .dashboard-card { padding: 16px; }
+  .dashboard-card h1 { font-size: 1.2rem; }
+  .dashboard-card h2 { font-size: 0.98rem; }
+
+  .navbar a { margin-left: 10px; font-size: 0.85rem; }
+
+  .history-list li .link-btn { display: block; margin: 6px 0 0; }
+
+  .sos-launcher {
+    width: 48px; height: 48px; font-size: 1.2rem; bottom: 18px; left: 18px;
+  }
+  .chat-widget-launcher {
+    width: 52px; height: 52px; bottom: 18px; right: 18px;
+  }
+}
+
+/* ==========================================================
+   POLISH PASS — tighter spacing + mobile responsiveness
+   for dashboard, health-service pages, and shared widgets.
+   (Appended last so it reliably wins the cascade.)
+   ========================================================== */
+
+/* Tighter vertical rhythm inside dashboard-style cards */
+.dashboard-card h1 { margin-bottom: 8px; font-size: 1.6rem; }
+.dashboard-card h2 { margin-top: 26px; margin-bottom: 10px; font-size: 1.05rem; }
+.dashboard-card > p { margin-bottom: 16px; }
+
+/* Forms: consistent, comfortable spacing */
+.stacked-form { gap: 0; }
+.stacked-form .order-label { margin-top: 2px; margin-bottom: 5px; font-size: 0.82rem; }
+.stacked-form input,
+.stacked-form select,
+.stacked-form textarea { margin-bottom: 14px; }
+
+/* List items (appointments, medications, bills, history) */
+.history-list li {
+  padding: 14px 16px;
+  line-height: 1.5;
+}
+.history-list li + li { margin-top: 8px; }
+.history-list .status-badge { margin: 4px 0; }
+.history-list .link-btn { vertical-align: middle; }
+.history-list .timestamp { margin-top: 6px; }
+
+/* Navbar: wrap gracefully instead of overflowing */
+.navbar { flex-wrap: wrap; row-gap: 8px; }
+
+/* ===== Tablet & below ===== */
+@media (max-width: 640px) {
+  .navbar { padding: 14px 20px; }
+  .navbar a { margin-left: 14px; font-size: 0.9rem; }
+  .brand { font-size: 1.2rem; }
+
+  .dashboard { margin: 24px auto; padding: 0 14px; }
+  .dashboard-card { padding: 22px; }
+  .dashboard-card h1 { font-size: 1.35rem; }
+
+  .food-orders,
+  .food-order-section .food-orders {
+    grid-template-columns: 1fr !important;
+    gap: 14px;
+  }
+  .food-card { padding: 18px; }
+
+  .stacked-form input,
+  .stacked-form select,
+  .stacked-form textarea {
+    padding: 11px;
+    font-size: 0.95rem;
+  }
+
+  .history-list li {
+    padding: 12px 14px;
+    font-size: 0.92rem;
+  }
+
+  .order-modal { width: 100%; padding: 20px; border-radius: 14px; }
+}
+
+/* ===== Small phones ===== */
+@media (max-width: 420px) {
+  .dashboard-card { padding: 16px; }
+  .dashboard-card h1 { font-size: 1.2rem; }
+  .dashboard-card h2 { font-size: 0.98rem; }
+
+  .navbar a { margin-left: 10px; font-size: 0.85rem; }
+
+  .history-list li .link-btn { display: block; margin: 6px 0 0; }
+
+  .sos-launcher {
+    width: 48px; height: 48px; font-size: 1.2rem; bottom: 18px; left: 18px;
+  }
+  .chat-widget-launcher {
+    width: 52px; height: 52px; bottom: 18px; right: 18px;
+  }
+}

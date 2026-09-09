@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - MediTrust AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="brand"><a href="{{ url_for('index') }}">MediTrust <span>AI</span></a></div>
+    <div class="nav-links">
+      <a href="{{ url_for('dashboard') }}">Dashboard</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+  </nav>
+
+  <div class="dashboard">
+    <h1>Admin Panel</h1>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash">
+          {% for m in messages %}<p>{{ m }}</p>{% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    {% if sos_alerts %}
+      <h2 style="color:#b91c1c;">🆘 Active Emergency Alerts ({{ sos_alerts|length }})</h2>
+      <ul class="history-list">
+        {% for s in sos_alerts %}
+          <li style="border-left: 4px solid #b91c1c;">
+            <strong>{{ s.username }}</strong> — Room {{ s.room_number }}
+            {% if s.message %}<br>{{ s.message }}{% endif %}
+            <form method="POST" action="{{ url_for('admin_resolve_sos', alert_id=s.id) }}" style="display:inline; margin-left:10px;">
+              <button type="submit" class="link-btn">Mark Resolved</button>
+            </form>
+            <span class="timestamp">{{ s.created_at }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <h2 style="margin-top:30px;">Add a Bill</h2>
+    <form method="POST" action="{{ url_for('admin_add_bill') }}" class="stacked-form" style="max-width:400px;">
+      <label class="order-label">Username</label>
+      <input type="text" name="username" placeholder="Patient username" required>
+      <label class="order-label">Description</label>
+      <input type="text" name="description" placeholder="e.g. Room charges - 3 days" required>
+      <label class="order-label">Amount (₹)</label>
+      <input type="number" step="0.01" name="amount" placeholder="e.g. 4500" required>
+      <button type="submit" class="cta" style="width:100%; border:none; cursor:pointer; margin-top:10px;">Add Bill</button>
+    </form>
+
+    <h2 style="margin-top:30px;">Registered Patients ({{ users|length }})</h2>
+    <ul class="history-list">
+      {% for u in users %}
+        <li>
+          <strong>{{ u.username }}</strong> — {{ u.email }} — role: {{ u.role }}
+          <span class="timestamp">Joined {{ u.created_at }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <h2 style="margin-top:30px;">Recent Chat Activity</h2>
+    <ul class="history-list">
+      {% for c in chats %}
+        <li>
+          <strong>{{ c.username }}:</strong> {{ c.question }}<br>
+          <strong>Bot:</strong> {{ c.answer }}
+          <span class="timestamp">{{ c.created_at }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</body>
+</html>

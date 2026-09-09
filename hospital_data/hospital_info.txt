@@ -1,0 +1,228 @@
+Hospital Name : Ashmi Hospital
+
+Hospital Address : Chenamamvilai,kurumathoor kuzhithurai(po),Kanyakumari.
+
+Contact Number : 9999999999,6666666666
+
+Emergency Services : Emergency Services are available 24 hours a day, 7 days a week.
+
+Emergency Department Location : Ground Floor, Emergency Wing.
+
+Pharmacy : 
+Location : Ground Floor, near the main reception.
+Timing : 8:00 AM to 10:00 PM.
+
+Available Services:
+- Prescription medicine dispensing
+- Basic healthcare products
+- Medicine availability information
+- Guidance on how to use prescribed medicines
+Contact:
+Patients can contact the pharmacy counter for medicine availability and general pharmacy-related informaion.
+
+Departments:
+
+Cardiology:
+
+Location:
+Second Floor.
+
+Doctors:
+Dr. Ashmi JJ  - Cardiologist
+Dr. Priya Sharma - Cardiologist
+
+Working Hours:
+9:00 AM to 5:00 PM, Monday to Saturday.
+Departments:
+
+Neurology:
+
+Location:
+Third Floor.
+
+Doctors:
+Dr. Ravi Kumar - Neurologist
+Dr. Meena Raj - Neurologist
+
+Working Hours:
+9:00 AM to 4:00 PM, Monday to Friday.
+Pediatrics:
+
+Location:
+First Floor.
+
+Doctors:
+Dr. Anitha Kumar - Pediatrician
+Dr. Suresh Raj - Pediatrician
+
+Working Hours:
+9:00 AM to 6:00 PM, Monday to Saturday.
+
+
+Orthopedics:
+
+Location:
+Second Floor.
+
+Doctors:
+Dr. Karthik Rao - Orthopedic Specialist
+Dr. Divya Menon - Orthopedic Specialist
+
+Working Hours:
+9:00 AM to 5:00 PM, Monday to Saturday.
+
+
+Dermatology:
+
+Location:
+Third Floor.
+
+Doctors:
+Dr. Neha Sharma - Dermatologist
+Dr. Meera Krishnan - Dermatologist
+
+Working Hours:
+10:00 AM to 5:00 PM, Monday to Friday.
+
+
+Gynecology:
+
+Location:
+Third Floor.
+
+Doctors:
+Dr. Kavitha Raj - Gynecologist
+Dr. Anjali Kumar - Gynecologist
+
+Working Hours:
+9:00 AM to 4:00 PM, Monday to Saturday.
+
+
+General Medicine:
+
+Location:
+First Floor.
+
+Doctors:
+Dr. Suresh Kumar - General Physician
+Dr. Priya Raj - General Physician
+
+Working Hours:
+8:00 AM to 6:00 PM, Monday to Saturday.
+
+
+ENT:
+
+Location:
+Second Floor.
+
+Doctors:
+Dr. Rahul Kumar - ENT Specialist
+Dr. Sneha Raj - ENT Specialist
+
+Working Hours:
+9:00 AM to 5:00 PM, Monday to Friday.
+
+
+Ophthalmology:
+
+Location:
+First Floor.
+
+Doctors:
+Dr. Nikhil Sharma - Ophthalmologist
+Dr. Asha Kumar - Ophthalmologist
+
+Working Hours:
+9:00 AM to 5:00 PM, Monday to Saturday.
+
+
+Dentistry:
+
+Location:
+Ground Floor.
+
+Doctors:
+Dr. Varun Raj - Dental Surgeon
+Dr. Priya Menon - Dentist
+
+Working Hours:
+10:00 AM to 6:00 PM, Monday to Saturday.
+
+
+Psychiatry:
+
+Location:
+Third Floor.
+
+Doctors:
+Dr. Meena Sharma - Psychiatrist
+Dr. Arjun Kumar - Psychiatrist
+
+Working Hours:
+10:00 AM to 4:00 PM, Monday to Friday.
+Laboratory:
+Location:
+Ground Floor.
+
+Working Hours:
+7:00 AM to 7:00 PM, Monday to Saturday.
+
+
+Radiology:
+Location:
+First Floor.
+
+Working Hours:
+8:00 AM to 6:00 PM, Monday to Saturday.
+
+
+Visiting Hours:
+4:00 PM to 6:00 PM.
+
+Billing:
+Location:
+Ground Floor, near the main reception.
+
+Working Hours:
+8:00 AM to 8:00 PM.
+
+
+Patient Registration:
+Location:
+Ground Floor, Main Reception.
+
+Working Hours:
+8:00 AM to 8:00 PM.
+
+
+Insurance:
+Insurance assistance is available at the billing department.
+Patients should bring their insurance documents and identification documents.
+
+
+Parking:
+Parking is available for patients and visitors.
+The parking area is located beside the hospital building.
+
+
+Cafeteria:
+Location:
+Ground Floor.
+
+Working Hours:
+7:00 AM to 8:00 PM.
+
+
+Wheelchair Availability:
+Wheelchairs are available at the main reception and emergency department.
+
+
+Hospital Hygiene:
+The hospital follows regular cleaning and sanitation procedures.
+Patient rooms, waiting areas, restrooms, and common areas are cleaned regularly.
+
+
+Bed Availability:
+Bed availability changes depending on current admissions and discharges.
+Patients should contact the hospital reception for current availability.

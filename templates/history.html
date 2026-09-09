@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat History - MediTrust AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="brand"><a href="{{ url_for('index') }}">MediTrust <span>AI</span></a></div>
+    <div class="nav-links">
+      <a href="{{ url_for('dashboard') }}">Dashboard</a>
+      <a href="{{ url_for('chatbot_page') }}">Chatbot</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+  </nav>
+
+  <div class="dashboard">
+    <div class="dashboard-card">
+      <h1>Your Chat History</h1>
+      <p style="color:#64748b; margin-bottom:20px;">All your past conversations with MediTrust AI.</p>
+
+      {% if history %}
+        <ul class="history-list">
+          {% for item in history %}
+            <li>
+              <strong>You:</strong> {{ item.question }}<br>
+              <strong>Bot:</strong> {{ item.answer }}
+              <span class="timestamp">{{ item.created_at }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No conversations yet. Start chatting to see history here.</p>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>

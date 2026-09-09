@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Appointments - MediTrust AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="brand"><a href="{{ url_for('index') }}">MediTrust <span>AI</span></a></div>
+    <div class="nav-links">
+      <a href="{{ url_for('dashboard') }}">Dashboard</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+  </nav>
+
+  <div class="dashboard">
+    <div class="dashboard-card">
+      <h1>Book an Appointment</h1>
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="flash">
+            {% for m in messages %}<p>{{ m }}</p>{% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      <form method="POST" class="stacked-form">
+        <label class="order-label">Department</label>
+        <select name="department" required>
+          <option value="">Select department</option>
+          <option>Cardiology</option>
+          <option>Pediatrics</option>
+          <option>Orthopedics</option>
+          <option>Neurology</option>
+          <option>General Medicine</option>
+          <option>Dermatology</option>
+        </select>
+
+        <label class="order-label">Doctor</label>
+        <input type="text" name="doctor_name" placeholder="e.g. Dr. Ashmi JJ" required>
+
+        <label class="order-label">Date</label>
+        <input type="date" name="appointment_date" required>
+
+        <label class="order-label">Time</label>
+        <input type="time" name="appointment_time" required>
+
+        <button type="submit" class="cta" style="width:100%; border:none; cursor:pointer; margin-top:14px;">
+          Request Appointment
+        </button>
+      </form>
+
+      <h2 style="margin-top:34px;">Your Appointments</h2>
+      {% if appointments %}
+        <ul class="history-list">
+          {% for a in appointments %}
+            <li>
+              <strong>{{ a.doctor_name }}</strong> — {{ a.department }}<br>
+              {{ a.appointment_date }} at {{ a.appointment_time }}
+              &nbsp;<span class="status-badge status-{{ a.status }}">{{ a.status }}</span>
+              {% if a.status != 'cancelled' %}
+                <form method="POST" action="{{ url_for('cancel_appointment_route', appointment_id=a.id) }}" style="display:inline;">
+                  <button type="submit" class="link-btn">Cancel</button>
+                </form>
+              {% endif %}
+              <span class="timestamp">Requested {{ a.created_at }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No appointments booked yet.</p>
+      {% endif %}
+    </div>
+  </div>
+
+  {% include "chat_widget.html" %}
+</body>
+</html>

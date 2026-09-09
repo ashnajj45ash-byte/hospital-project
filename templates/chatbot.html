@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chatbot - MediTrust AI</title>
+
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}"
+  >
+</head>
+
+<body>
+
+  <nav class="navbar">
+
+    <div class="brand">
+      <a href="{{ url_for('index') }}">
+        MediTrust <span>AI</span>
+      </a>
+    </div>
+
+    <div class="nav-links">
+
+      <a href="{{ url_for('dashboard') }}">
+        Dashboard
+      </a>
+
+      <a href="{{ url_for('logout') }}">
+        Logout
+      </a>
+
+    </div>
+
+  </nav>
+
+
+  <!-- Chatbot toolbar -->
+
+  <div class="chatbot-toolbar">
+
+    <button
+      type="button"
+      class="toolbar-btn"
+      onclick="location.href='{{ url_for('history_page') }}'"
+    >
+      🕘 Chat History
+    </button>
+
+  </div>
+
+
+  <!-- Chatbot -->
+
+  <div class="chat-container">
+
+    <div
+      id="chat-window"
+      class="chat-window"
+    >
+
+      <div class="bot-msg">
+
+        Hi {{ username }}! I'm MediTrust AI.
+        Ask me about departments, visiting
+        hours, appointments, billing, or
+        hospital facilities.
+
+      </div>
+
+    </div>
+
+
+    <form
+      id="chat-form"
+      class="chat-form"
+    >
+
+      <input
+        type="text"
+        id="chat-input"
+        placeholder="Type your question..."
+        autocomplete="off"
+        required
+      >
+
+      <button type="submit">
+        Send
+      </button>
+
+    </form>
+
+  </div>
+
+
+  <!-- Existing chatbot JavaScript -->
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

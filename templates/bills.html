@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bills - MediTrust AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="brand"><a href="{{ url_for('index') }}">MediTrust <span>AI</span></a></div>
+    <div class="nav-links">
+      <a href="{{ url_for('dashboard') }}">Dashboard</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+  </nav>
+
+  <div class="dashboard">
+    <div class="dashboard-card">
+      <h1>Your Bills</h1>
+      <p style="color:#64748b; margin-bottom:20px;">
+        Total due: <strong style="color:#b91c1c;">₹{{ "%.2f"|format(total_due) }}</strong>
+      </p>
+
+      {% if bills %}
+        <ul class="history-list">
+          {% for b in bills %}
+            <li>
+              <strong>{{ b.description }}</strong> — ₹{{ "%.2f"|format(b.amount) }}
+              &nbsp;<span class="status-badge status-{{ b.status }}">{{ b.status }}</span>
+              <span class="timestamp">{{ b.created_at }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No bills on record yet.</p>
+      {% endif %}
+    </div>
+  </div>
+
+  {% include "chat_widget.html" %}
+</body>
+</html>

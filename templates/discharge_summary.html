@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Discharge Summary - MediTrust AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="brand"><a href="{{ url_for('index') }}">MediTrust <span>AI</span></a></div>
+    <div class="nav-links">
+      <a href="{{ url_for('dashboard') }}">Dashboard</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+  </nav>
+
+  <div class="dashboard">
+    <div class="dashboard-card">
+      <h1>Discharge Summary</h1>
+      <p style="color:#64748b; margin-bottom:20px;">
+        Fill in the details below to generate a downloadable PDF discharge summary.
+      </p>
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="flash">
+            {% for m in messages %}<p>{{ m }}</p>{% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      <form method="POST" class="stacked-form">
+        <label class="order-label">Patient Name</label>
+        <input type="text" name="patient_name" required>
+
+        <label class="order-label">Diagnosis</label>
+        <textarea name="diagnosis" rows="2"></textarea>
+
+        <label class="order-label">Admission Date</label>
+        <input type="date" name="admission_date" required>
+
+        <label class="order-label">Discharge Date</label>
+        <input type="date" name="discharge_date" required>
+
+        <label class="order-label">Doctor's Notes</label>
+        <textarea name="doctor_notes" rows="4"></textarea>
+
+        <button type="submit" class="cta" style="width:100%; border:none; cursor:pointer; margin-top:14px;">
+          Generate & Download PDF
+        </button>
+      </form>
+    </div>
+  </div>
+
+  {% include "chat_widget.html" %}
+</body>
+</html>

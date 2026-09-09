@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Medication Reminders - MediTrust AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="brand"><a href="{{ url_for('index') }}">MediTrust <span>AI</span></a></div>
+    <div class="nav-links">
+      <a href="{{ url_for('dashboard') }}">Dashboard</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+  </nav>
+
+  <div class="dashboard">
+    <div class="dashboard-card">
+      <h1>Medication Reminders</h1>
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="flash">
+            {% for m in messages %}<p>{{ m }}</p>{% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      <form method="POST" class="stacked-form">
+        <label class="order-label">Medicine Name</label>
+        <input type="text" name="medicine_name" placeholder="e.g. Paracetamol" required>
+
+        <label class="order-label">Dosage</label>
+        <input type="text" name="dosage" placeholder="e.g. 500mg">
+
+        <label class="order-label">Times</label>
+        <input type="text" name="timings" placeholder="e.g. 8:00 AM, 2:00 PM, 8:00 PM" required>
+
+        <label class="order-label">Notes (optional)</label>
+        <textarea name="notes" rows="2" placeholder="e.g. take after food"></textarea>
+
+        <button type="submit" class="cta" style="width:100%; border:none; cursor:pointer; margin-top:14px;">
+          Add Reminder
+        </button>
+      </form>
+
+      <h2 style="margin-top:34px;">Your Medications</h2>
+      {% if medications %}
+        <ul class="history-list">
+          {% for m in medications %}
+            <li>
+              <strong>{{ m.medicine_name }}</strong>{% if m.dosage %} — {{ m.dosage }}{% endif %}<br>
+              🕒 {{ m.timings }}
+              {% if m.notes %}<br><span style="color:#64748b;">{{ m.notes }}</span>{% endif %}
+              <form method="POST" action="{{ url_for('delete_medication_route', medication_id=m.id) }}" style="display:inline; margin-left:10px;">
+                <button type="submit" class="link-btn">Remove</button>
+              </form>
+              <span class="timestamp">Added {{ m.created_at }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No medication reminders yet.</p>
+      {% endif %}
+    </div>
+  </div>
+
+  {% include "chat_widget.html" %}
+</body>
+</html>

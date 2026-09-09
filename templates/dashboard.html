@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Dashboard - MediTrust AI</title>
+
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}"
+  >
+
+</head>
+
+
+<body>
+
+
+  <!-- ================= NAVBAR ================= -->
+
+  <nav class="navbar">
+
+    <div class="brand">
+
+      <a href="{{ url_for('index') }}">
+        MediTrust <span>AI</span>
+      </a>
+
+    </div>
+
+
+    <div class="nav-links">
+
+      <a href="{{ url_for('chatbot_page') }}">
+        Chatbot
+      </a>
+
+      <a href="{{ url_for('logout') }}">
+        Logout
+      </a>
+
+    </div>
+
+  </nav>
+
+
+
+  <!-- ================= DASHBOARD ================= -->
+
+  <div class="dashboard">
+
+    <div class="dashboard-card">
+
+
+      <!-- ================= WELCOME ================= -->
+
+      <h1>
+        Welcome, {{ username }} 👋
+      </h1>
+
+
+
+      <!-- ================= ADMIN ================= -->
+
+      {% if session.get('role') == 'admin' %}
+
+        <p>
+
+          <a
+            href="{{ url_for('admin_panel') }}"
+            class="cta"
+            style="display:inline-block; margin-bottom:20px;"
+          >
+
+            Go to Admin Panel
+
+          </a>
+
+        </p>
+
+      {% endif %}
+
+
+
+      <!-- ================= DESCRIPTION ================= -->
+
+      <p
+        style="
+          color:#64748b;
+          margin-bottom:25px;
+        "
+      >
+
+        Need help? Click the chat icon in the
+        bottom-right corner anytime.
+
+      </p>
+
+
+
+      <!-- ==================================================
+           HEALTH SERVICES SECTION
+           ================================================== -->
+
+      <div class="food-order-section">
+        <h2>My Health Services</h2>
+        <p class="food-section-description">
+          Manage appointments, medications, bills, and discharge paperwork.
+        </p>
+
+        <div class="food-orders">
+          <div class="food-card">
+            <div class="food-icon">📅</div>
+            <h3>Appointments</h3>
+            <p>Book and track your doctor appointments.</p>
+            <a href="{{ url_for('appointments_page') }}" class="food-btn" style="display:inline-block; text-decoration:none;">Book / View</a>
+          </div>
+
+          <div class="food-card">
+            <div class="food-icon">💊</div>
+            <h3>Medication Reminders</h3>
+            <p>Keep track of your medicines and timings.</p>
+            <a href="{{ url_for('medications_page') }}" class="food-btn" style="display:inline-block; text-decoration:none;">Manage</a>
+          </div>
+
+          <div class="food-card">
+            <div class="food-icon">🧾</div>
+            <h3>Bills</h3>
+            <p>View your hospital charges and dues.</p>
+            <a href="{{ url_for('bills_page') }}" class="food-btn" style="display:inline-block; text-decoration:none;">View Bills</a>
+          </div>
+
+          <div class="food-card">
+            <div class="food-icon">📄</div>
+            <h3>Discharge Summary</h3>
+            <p>Generate and download a discharge summary PDF.</p>
+            <a href="{{ url_for('discharge_summary_page') }}" class="food-btn" style="display:inline-block; text-decoration:none;">Generate</a>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- ==================================================
+           FOOD ORDER SECTION
+           ================================================== -->
+
+      <div class="food-order-section">
+
+
+        <h2>
+          Food Services
+        </h2>
+
+
+        <p class="food-section-description">
+
+          Order food directly from the dashboard.
+
+        </p>
+
+
+
+        <!-- ================= FOOD CARDS ================= -->
+
+        <div class="food-orders">
+
+
+          <!-- ================= PATIENT FOOD ================= -->
+
+          <div class="food-card">
+
+
+            <div class="food-icon">
+              🏥
+            </div>
+
+
+            <h3>
+              Patient Food Order
+            </h3>
+
+
+            <p>
+
+              Order diet-friendly meals
+              for the admitted patient.
+
+            </p>
+
+
+            <button
+              type="button"
+              class="food-btn"
+              onclick="openOrderModal('patient')"
+            >
+
+              Order Patient Food
+
+            </button>
+
+
+          </div>
+
+
+
+          <!-- ================= GUARDIAN FOOD ================= -->
+
+          <div class="food-card">
+
+
+            <div class="food-icon">
+              🍱
+            </div>
+
+
+            <h3>
+              Guardian Food Order
+            </h3>
+
+
+            <p>
+
+              Order food for the patient's
+              guardian or caretaker.
+
+            </p>
+
+
+            <button
+              type="button"
+              class="food-btn"
+              onclick="openOrderModal('guardian')"
+            >
+
+              Order Guardian Food
+
+            </button>
+
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+
+      <!-- ==================================================
+           CHAT HISTORY
+           ================================================== -->
+
+      <p
+        class="history-button-container"
+        style="margin-top:30px;"
+      >
+
+        <a
+          href="{{ url_for('history_page') }}"
+          class="cta"
+          style="display:inline-block;"
+        >
+
+          View Chat History
+
+        </a>
+
+      </p>
+
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ==================================================
+       FOOD ORDER MODAL
+       ================================================== -->
+
+  <div
+    id="order-overlay"
+    class="order-overlay"
+  >
+
+
+    <div class="order-modal">
+
+
+      <!-- ================= MODAL HEADER ================= -->
+
+      <div class="order-modal-header">
+
+
+        <h3 id="order-modal-title">
+          Order Food
+        </h3>
+
+
+        <button
+          type="button"
+          class="order-close"
+          onclick="closeOrderModal()"
+        >
+
+          ✕
+
+        </button>
+
+
+      </div>
+
+
+
+      <!-- ================= MODAL DESCRIPTION ================= -->
+
+      <p
+        id="order-modal-subtitle"
+        class="order-modal-subtitle"
+      >
+      </p>
+
+
+
+      <!-- ================= ORDER FORM ================= -->
+
+      <form id="order-form">
+
+
+        <!-- Food items will appear here -->
+
+        <div
+          id="order-items"
+          class="order-items"
+        >
+        </div>
+
+
+
+        <!-- ================= ROOM NUMBER ================= -->
+
+        <label
+          class="order-label"
+          for="order-room"
+        >
+
+          Room Number
+
+        </label>
+
+
+        <input
+          type="text"
+          id="order-room"
+          placeholder="Example: 204"
+          required
+        >
+
+
+
+        <!-- ================= NOTES ================= -->
+
+        <label
+          class="order-label"
+          for="order-notes"
+        >
+
+          Notes / Special Requests
+
+        </label>
+
+
+        <textarea
+          id="order-notes"
+          placeholder="Any allergies or special requests?"
+          rows="3"
+        ></textarea>
+
+
+
+        <!-- ================= PLACE ORDER ================= -->
+
+        <button
+          type="submit"
+          class="cta order-submit-btn"
+        >
+
+          Place Order
+
+        </button>
+
+
+
+        <!-- ================= STATUS ================= -->
+
+        <p
+          id="order-status"
+          class="order-status"
+        >
+        </p>
+
+
+      </form>
+
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ==================================================
+       EXISTING CHAT WIDGET
+       ================================================== -->
+
+  {% include "chat_widget.html" %}
+
+
+
+  <!-- ==================================================
+       FOOD ORDER JAVASCRIPT
+       ================================================== -->
+
+  <script>
+
+
+    /* ==========================================
+       PATIENT FOOD MENU
+       ========================================== */
+
+    const PATIENT_MENU = [
+
+      "Vegetable Khichdi",
+
+      "Steamed Rice with Dal",
+
+      "Vegetable Soup",
+
+      "Boiled Vegetables",
+
+      "Fruit Bowl",
+
+      "Herbal Tea"
+
+    ];
+
+
+
+    /* ==========================================
+       GUARDIAN FOOD MENU
+       ========================================== */
+
+    const GUARDIAN_MENU = [
+
+      "Chicken Biryani",
+
+      "Paneer Butter Masala",
+
+      "Chapati with Curry",
+
+      "Masala Dosa",
+
+      "Coffee / Tea",
+
+      "Samosa Snack Plate"
+
+    ];
+
+
+
+    /* ==========================================
+       CURRENT ORDER TYPE
+       ========================================== */
+
+    let currentOrderType = "patient";
+
+
+
+    /* ==========================================
+       OPEN FOOD ORDER MODAL
+       ========================================== */
+
+    function openOrderModal(type) {
+
+
+      currentOrderType = type;
+
+
+      const menu =
+        type === "patient"
+          ? PATIENT_MENU
+          : GUARDIAN_MENU;
+
+
+
+      /* Change title */
+
+      document.getElementById(
+        "order-modal-title"
+      ).textContent =
+
+        type === "patient"
+          ? "Patient Food Order"
+          : "Guardian Food Order";
+
+
+
+      /* Change description */
+
+      document.getElementById(
+        "order-modal-subtitle"
+      ).textContent =
+
+        type === "patient"
+
+          ? "Select food for the admitted patient."
+
+          : "Select food for the patient's guardian or caretaker.";
+
+
+
+      /* Create food list */
+
+      const itemsDiv =
+        document.getElementById("order-items");
+
+
+      itemsDiv.innerHTML = menu.map(
+        function(item) {
+
+          return `
+
+            <label class="order-item">
+
+              <input
+                type="checkbox"
+                value="${item}"
+              >
+
+              <span>
+                ${item}
+              </span>
+
+            </label>
+
+          `;
+
+        }
+      ).join("");
+
+
+
+      /* Clear old status */
+
+      document.getElementById(
+        "order-status"
+      ).textContent = "";
+
+
+
+      /* Open modal */
+
+      document.getElementById(
+        "order-overlay"
+      ).classList.add("open");
+
+    }
+
+
+
+    /* ==========================================
+       CLOSE FOOD ORDER MODAL
+       ========================================== */
+
+    function closeOrderModal() {
+
+      document.getElementById(
+        "order-overlay"
+      ).classList.remove("open");
+
+    }
+
+
+
+    /* ==========================================
+       SUBMIT FOOD ORDER
+       ========================================== */
+
+    document.getElementById(
+      "order-form"
+    ).addEventListener(
+      "submit",
+      async function(event) {
+
+
+        event.preventDefault();
+
+
+
+        /* Get selected food items */
+
+        const selectedItems =
+          Array.from(
+            document.querySelectorAll(
+              "#order-items input:checked"
+            )
+          ).map(
+            function(checkbox) {
+              return checkbox.value;
+            }
+          );
+
+
+
+        /* Get room number */
+
+        const roomNumber =
+          document.getElementById(
+            "order-room"
+          ).value.trim();
+
+
+
+        /* Get notes */
+
+        const notes =
+          document.getElementById(
+            "order-notes"
+          ).value.trim();
+
+
+
+        /* Status element */
+
+        const status =
+          document.getElementById(
+            "order-status"
+          );
+
+
+
+        /* ==========================
+           VALIDATE FOOD
+           ========================== */
+
+        if (selectedItems.length === 0) {
+
+          status.textContent =
+            "Please select at least one food item.";
+
+          status.style.color =
+            "#b91c1c";
+
+          return;
+
+        }
+
+
+
+        /* ==========================
+           VALIDATE ROOM
+           ========================== */
+
+        if (!roomNumber) {
+
+          status.textContent =
+            "Please enter the room number.";
+
+          status.style.color =
+            "#b91c1c";
+
+          return;
+
+        }
+
+
+
+        /* ==========================
+           SEND TO FLASK
+           ========================== */
+
+        try {
+
+
+          const response =
+            await fetch(
+              "{{ url_for('api_order') }}",
+              {
+
+                method: "POST",
+
+                headers: {
+
+                  "Content-Type":
+                    "application/json"
+
+                },
+
+                body: JSON.stringify({
+
+                  ordered_by:
+                    currentOrderType,
+
+                  room_number:
+                    roomNumber,
+
+                  items:
+                    selectedItems,
+
+                  notes:
+                    notes
+
+                })
+
+              }
+            );
+
+
+
+          /* Get response */
+
+          const data =
+            await response.json();
+
+
+
+          /* ==========================
+             SUCCESS
+             ========================== */
+
+          if (response.ok) {
+
+
+            status.textContent =
+              "Order placed successfully!";
+
+            status.style.color =
+              "#0f766e";
+
+
+
+            /* Clear form */
+
+            document.getElementById(
+              "order-form"
+            ).reset();
+
+
+
+            /* Close after 2 seconds */
+
+            setTimeout(
+              function() {
+
+                closeOrderModal();
+
+              },
+              2000
+            );
+
+
+          }
+
+
+          /* ==========================
+             ERROR FROM SERVER
+             ========================== */
+
+          else {
+
+
+            status.textContent =
+              data.error ||
+              "Unable to place the order.";
+
+            status.style.color =
+              "#b91c1c";
+
+          }
+
+
+        }
+
+
+        /* ==========================
+           CONNECTION ERROR
+           ========================== */
+
+        catch (error) {
+
+
+          console.error(
+            "Food order error:",
+            error
+          );
+
+
+          status.textContent =
+            "Unable to place the order. Please try again.";
+
+          status.style.color =
+            "#b91c1c";
+
+        }
+
+      }
+    );
+
+
+
+    /* ==========================================
+       CLOSE MODAL WHEN CLICKING OUTSIDE
+       ========================================== */
+
+    document.getElementById(
+      "order-overlay"
+    ).addEventListener(
+      "click",
+      function(event) {
+
+
+        if (
+          event.target ===
+          document.getElementById(
+            "order-overlay"
+          )
+        ) {
+
+          closeOrderModal();
+
+        }
+
+      }
+    );
+
+
+  </script>
+
+
+</body>
+
+</html>

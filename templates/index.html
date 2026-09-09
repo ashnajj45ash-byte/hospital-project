@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MediTrust AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="brand">MediTrust <span>AI</span></div>
+    <div class="nav-links">
+      <a href="{{ url_for('login') }}">Login</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Your Hospital, Answered Instantly.</h1>
+      <p>MediTrust AI uses Retrieval-Augmented Generation to answer questions about
+         hospital departments, visiting hours, billing, and more — grounded in
+         our official hospital records.</p>
+      <a class="cta" href="{{ url_for('login') }}">Get Started</a>
+    </div>
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&auto=format&fit=crop" alt="Hospital building">
+    </div>
+  </header>
+
+  <section class="stats-strip">
+    <div><strong>25+</strong><span>Years of Service</span></div>
+    <div><strong>120+</strong><span>Doctors</span></div>
+    <div><strong>15</strong><span>Departments</span></div>
+    <div><strong>50k+</strong><span>Patients Served</span></div>
+  </section>
+
+  <section class="features">
+    <div class="feature-card">
+      <h3>🩺 Ask Anything</h3>
+      <p>Departments, doctors, timings, billing — get instant grounded answers.</p>
+    </div>
+    <div class="feature-card">
+      <h3>🔒 Secure Login</h3>
+      <p>Your chats are private and tied to your account.</p>
+    </div>
+    <div class="feature-card">
+      <h3>⚡ Powered by Groq</h3>
+      <p>Ultra-fast LLM responses backed by real hospital data (RAG).</p>
+    </div>
+  </section>
+
+  <section class="departments">
+    <h2>Our Departments</h2>
+    <div class="dept-grid">
+      <div class="dept-card">🫀 Cardiology</div>
+      <div class="dept-card">🧒 Pediatrics</div>
+      <div class="dept-card">🦴 Orthopedics</div>
+      <div class="dept-card">💊 Pharmacy</div>
+      <div class="dept-card">🧠 Neurology</div>
+      <div class="dept-card">🚑 Emergency Care</div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 MediTrust AI. For medical emergencies call 1-800-555-0911.</p>
+  </footer>
+</body>
+</html>
