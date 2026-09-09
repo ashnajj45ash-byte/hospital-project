@@ -4,3 +4,4 @@ python-dotenv==1.0.1
 groq==0.9.0
 reportlab==4.2.2
 gunicorn
+httpx==0.27.2
